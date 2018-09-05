@@ -1,0 +1,101 @@
+package com.swabhav.framedemo;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import com.tic.tac.toe.Mark;
+import com.tic.tac.toe.Player;
+
+public class HomeFrame extends JFrame{
+	String[] playersName;
+	String[] playersMark;
+	JTextField player1Name, player2Name, player1Mark, player2Mark;
+	
+	public HomeFrame(String title) {
+		setLayout(new BorderLayout());
+		setTitle(title);
+		setSize(600, 300);
+		JPanel northPanel = new JPanel(new GridLayout(2, 1));
+		
+		JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		titlePanel.add(new JLabel("Play Tic Tac Toe"));
+		northPanel.add(titlePanel);
+		
+		JPanel namePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		player1Name = new JTextField("Player 1 name", 16);
+		player1Mark = new JTextField("mark", 4);
+		player2Name = new JTextField("Player 2 name", 16);
+		player2Mark = new JTextField("mark", 4);
+		
+		namePanel.add(player1Name);
+		namePanel.add(player1Mark);
+		namePanel.add(player2Name);
+		namePanel.add(player2Mark);
+		northPanel.add(namePanel);
+		
+		add(northPanel);
+		this.playersName = new String[2];
+		this.playersMark = new String[2];
+		getPlayersDetails();
+		new TicTacToeFrame("Tic Tac Toe Board", this.playersName, this.playersMark);
+		setVisible(true);
+	}
+	
+	public void getPlayersDetails() {
+		player1Name.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				playersName[0] = player1Name.getText();
+				System.out.println(playersName[0]);
+			}
+		});
+		
+		player2Name.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				playersName[1] = player2Name.getText();
+				System.out.println(playersName[1]);
+				
+			}
+		});
+		
+		player1Mark.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				playersMark[0] = player1Name.getText();
+				System.out.println(playersMark[0]);
+				
+			}
+		});
+		
+		player2Mark.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				playersMark[1] = player2Name.getText();
+				System.out.println(playersMark[1]);
+				
+			}
+		});
+		//checkPlayers();
+	}
+	
+	public void checkPlayers() {
+		if(playersName[0] == null || playersName[1] == null || playersMark[0] == null || playersMark[1] == null) {
+			JOptionPane.showMessageDialog(this, "Please enter players details...");
+			getPlayersDetails();
+		}
+	}
+}

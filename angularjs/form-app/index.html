@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="form-app">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+
+<body>
+    <section>
+        <div>
+            Message:
+            <input type="text" ng-model="message" value=""> Background:
+            <select ng-model="background" ng-change=background=value>
+                <option value="">red</option>
+                <option value="">green</option>
+            </select>
+
+            Foreground:
+            <select ng-model="foreground" ng-change="foreground=foreground">
+                <option value="">red</option>
+                <option value="">black</option>
+            </select>
+
+            Font Size:
+            <input type="range" value="" ng-model="fontsize"> Font famiy:
+            <select ng-change="fontfamily= fontfamily" ng-model="fontfamily">
+                <option value="">Arial</option>
+                <option value="">Times New Roman</option>
+            </select>
+
+        </div>
+        <div>
+            <textarea ng-style="text-style">
+                {{foreground}}{{fontsize}}{{background}}
+            </textarea>
+        </div>
+    </section>
+
+    <script>
+    </script>
+
+</body>
+
+<script src="../angular.js"></script>
+<script>
+    angular.module("form-app", []);
+</script>
+
+</html>

@@ -1,0 +1,7 @@
+package com.swabhav.framedemo;
+
+import java.awt.event.ActionListener;
+
+public interface ButtonHandler extends ActionListener {
+
+}

@@ -1,0 +1,23 @@
+package com.swabhav.framedemo;
+
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+
+import javax.swing.JButton;
+
+public class GreenButtonHandler implements ButtonHandler {
+
+	Container container;
+	JButton greenButton;
+	
+	public public GreenButtonHandler(Container container, JButton button) {
+		this.container = container;
+		this.greenButton = button
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

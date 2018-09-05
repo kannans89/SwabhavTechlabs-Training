@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+    <title>Question bank</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="left-side brand-name">
+                <h1>Question Bank</h1>
+            </div>
+            <div class="start-quiz">
+                <button onclick="displayQuestion()" class="start-button">Start Quiz</button>
+            </div>
+            <div class="right-side">
+                <div class="completed-questions">
+                    <h2>5/5</h2>
+                </div>
+                <div class="finish-button">
+                    <button class="finish">FINISH</button>
+                </div>
+            </div>
+        </div>
+        <div class="question-bank">
+            <div class="question"></div>
+            <div class="options"></div>
+            <div class="right-wrong"></div>
+            <div class="canvas">
+                <canvas width="600" height="600" id="statistics"></canvas>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="prev-next">
+                <button class="prev">Prev</button>
+                <button class="next" onclick="displayQuestion()">Next</button>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

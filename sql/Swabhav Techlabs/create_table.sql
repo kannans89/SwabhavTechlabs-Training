@@ -1,0 +1,34 @@
+/*CREATE TABLE DEPT (
+ DEPTNO              int NOT NULL,
+ DNAME               varchar(14),
+ LOC                 varchar(13),
+ CONSTRAINT DEPT_PRIMARY_KEY PRIMARY KEY (DEPTNO));*/
+
+
+/*CREATE TABLE EMP (
+ EMPNO               int NOT NULL,
+ ENAME               varchar(10),
+ JOB                 varchar(9),
+ MGR                 int,
+ HIREDATE            DATETIME,
+ SAL                 NUMERIC,
+ COMM                NUMERIC,
+ DEPTNO              int NOT NULL,
+ CONSTRAINT EMP_FOREIGN_KEY FOREIGN KEY (DEPTNO) REFERENCES DEPT (DEPTNO),
+ CONSTRAINT EMP_PRIMARY_KEY PRIMARY KEY (EMPNO));*/
+
+/*CREATE TABLE REGIONS(region_id int PRIMARY KEY, region_name VARCHAR(25));*/
+
+/*CREATE TABLE LOCATIONS( 
+LOCATION_ID int not null, STREET_ADDRESS VARCHAR(40), POSTAL_CODE VARCHAR(12), 
+	CITY VARCHAR(30) NOT NULL,STATE_PROVINCE VARCHAR(25), COUNTRY_ID CHAR(2)) ;*/
+
+
+CREATE TABLE COUNTRIES 
+    ( COUNTRY_ID      CHAR(2) NOT NULL 
+    , COUNTRY_NAME    VARCHAR(40) 
+    , REGION_ID       int 
+    , CONSTRAINT     COUNTRY_C_ID_PK 
+                     PRIMARY KEY (COUNTRY_ID) 
+    ) 
+

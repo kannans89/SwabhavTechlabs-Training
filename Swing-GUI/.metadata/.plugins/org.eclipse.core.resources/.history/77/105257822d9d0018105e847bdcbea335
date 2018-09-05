@@ -1,0 +1,21 @@
+package com.swabhav.framedemo;
+import java.awt.Color;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class WelcomeFrame extends JFrame {
+		public WelcomeFrame(String title) {
+			Color lightBlue = new Color(51, 153, 255);
+			setTitle(title);
+			setSize(1024, 768);
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			
+			JButton redBUtton = new JButton("Red");
+			
+			add(redBUtton);
+			
+			setVisible(true);
+			getContentPane().setBackground(lightBlue);
+		}
+}

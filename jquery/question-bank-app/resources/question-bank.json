@@ -1,0 +1,34 @@
+{
+  "questionAnswers": {
+    "question1": {
+      "question": "Choose the capital of India?",
+      "options": ["Mumbai", "Bangalore", "New Delhi", "Chennai"],
+      "answer": "2"
+    },
+    "question2": {
+      "question": "Choose the capital of Karnataka?",
+      "options": ["Mumbai", "Bangalore", "New Delhi", "Chennai"],
+      "answer": "1"
+    },
+    "question3": {
+      "question": "Caluclate (9-5)*5?",
+      "options": ["20", "50", "10", "15"],
+      "answer": "0"
+    },
+    "question4": {
+      "question": "President of US?",
+      "options": ["Obama", "Trump", "Clinton", "Modi"],
+      "answer": "1"
+    },
+    "question5": {
+      "question": "Choose the capital of India?",
+      "options": ["Mumbai", "Bangalore", "New Delhi", "Chennai"],
+      "answer": "2"
+    },
+    "question6": {
+      "question": "President of India",
+      "options": ["Modi", "Singh", "Kumaraswami", "Umesh"],
+      "answer": "0"
+    }
+  }
+}

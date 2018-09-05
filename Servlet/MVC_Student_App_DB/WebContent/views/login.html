@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/MVC_Student_App_DB/views/style.css">
+</head>
+<body>
+<h1 align="center">Login to use App</h1>
+<div>
+	<nav>
+		<ul>
+			<li><a href="/MVC_Student_App_DB/showstudent">Show Students</a></li>
+			<li><a href="/MVC_Student_App_DB/showallcollege">Show Colleges</a></li>
+			<li id="logout" onclick="clearStorage()"><a href="/MVC_Student_App_DB/logout">Logout</a></li>
+		</ul>
+	</nav>
+</div>
+<div id="form">
+<form action="/MVC_Student_App_DB/login" method="post">
+	<div>
+		<label>Username</label>
+		<input name="username" type="text"/>
+	</div>
+	<div>
+		<label>Password</label>
+		<input name="password" type="password"/>
+	</div>
+	<input type="submit" value="Login">
+</form>
+</div>
+
+
+<script>
+var userName = localStorage.getItem("username");
+console.log(userName);
+var form = document.getElementById("form");
+var logout = document.getElementById("logout");
+
+if(userName !== ""){
+	console.log(userName);
+	form.style.display = "none";
+	logout.style.display = "block";
+} else{
+	console.log(userName);
+	form.style.display = "block";
+	logout.style.display = "none";
+}
+
+
+function clearStorage(){
+	localStorage.setItem("username", "");
+}
+
+
+</script>
+</body>
+</html>

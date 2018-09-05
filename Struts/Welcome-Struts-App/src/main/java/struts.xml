@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="main" namespace="/" extends="struts-default">
+		<action name="" class="">
+			<result name="success">/index.html</result>
+		</action>
+		<action name="home" class="com.techlabs.action.HomeAction">
+			<result name="success">/views/home.jsp</result>
+		</action>
+
+		<action name="browse" class="com.techlabs.action.BrowseAction">
+			<result name="success">/views/Browse.jsp</result>
+		</action>
+		
+		<action name="students" class="com.techlabs.action.StudentAction">
+			<result name="success">/views/Student.jsp</result>
+		</action>
+		
+		<action name="register" class="com.techlabs.action.RegisterAction">
+			<result name="success">/views/thankyou.jsp</result>
+			<result name="input" >/Register.jsp</result>
+		</action>
+		
+		<action name="addstudent" class="com.techlabs.action.AddStudentAction">
+			<result name="success">/views/addStudent.jsp</result>
+			
+		</action>
+		
+		<action name="addstudenttodb" method="addTodb" class="com.techlabs.action.AddStudentAction">
+			<result name="success" type="chain">students</result>
+			<result name="input" >/views/addStudent.jsp</result>
+		</action>
+		
+		<action name="editstudent" method="execute" class="com.techlabs.action.EditStudentAction">
+			<result name="success">/views/editStudent.jsp</result>
+			
+		</action>
+		
+		<action name="updatestudent" method="updateStudent" class="com.techlabs.action.EditStudentAction">
+		<result name="success" type="chain">students</result>
+		<result name="input" >/views/editStudent.jsp</result>
+		</action>
+		
+		<action name="deletestudent" class="com.techlabs.action.DeleteStudent">
+			<result name="success" type="chain">students</result>
+		</action>
+	</package>
+</struts>

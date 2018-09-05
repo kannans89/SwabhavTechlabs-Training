@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="binding-app">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Binding</title>
+</head>
+
+<body>
+    <div ng-controller="binding-controller">
+        <div>
+            <p>First name: {{student.firstName}} </p>
+            <p>Last name: {{student.lastName}}</p>
+            <hr/>
+        </div>
+
+        <div>
+            First Name:
+            <input ng-model="student.firstName" value="" type="text"> Last Name:
+            <input ng-model="student.lastName" value="" type="text">
+            <p>First name: {{student.firstName}} </p>
+            <p>Last name: {{student.lastName}}</p>
+            <hr/>
+        </div>
+
+        <div>
+            <p>First name: {{::student.firstName}} </p>
+            <p>Last name: {{::student.lastName}}</p>
+            <hr/>
+        </div>
+    </div>
+    <script src="../angular.js"></script>
+    <script src="binding.js"></script>
+</body>
+
+</html>

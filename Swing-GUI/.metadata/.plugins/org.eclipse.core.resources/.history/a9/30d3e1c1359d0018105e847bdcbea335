@@ -1,0 +1,25 @@
+package com.swabhav.framedemo;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+
+public class RedButtonHandler implements ActionListener {
+
+	private Container container;
+	private JButton button;
+	public RedButtonHandler(Container container, JButton button) {
+		this.container = container;
+		this.button = button;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		System.out.println("Width: "+button.getWidth()+"\nHeight: "+button.getWidth());
+		container.setBackground(Color.RED);
+	}
+
+}

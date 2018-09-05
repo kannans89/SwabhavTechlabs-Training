@@ -1,0 +1,16 @@
+package com.swabhav.framedemo;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+
+
+public class RedButtonHandler implements ActionListener {
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		System.out.println("Width "+button.getSize().getWidth()+"\nHeight: "+button.getSize().getHeight());
+	}
+
+}

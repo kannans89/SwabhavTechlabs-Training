@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function init() {
+            for (i = 0; i <= 10; i++) {
+                console.log(i)
+            }
+            console.log("end of loop " + i)
+        }
+
+        init();
+
+        //f1();
+        var f1 = function () {
+            console.log("inside f1");
+        }
+        //f1();
+
+        // var f2 = function () {
+        //     console.log("inside f2");
+        // }();
+
+        function download(url, callback) {
+            console.log("Downloading from " + url);
+            var random = ((Math.random() * 10) + 1).toFixed(2);
+            console.log(random)
+            if (random > 5) {
+                callback("success")
+            } else {
+                callback("Error");
+            }
+        }
+
+        download("https://google.com", function (status) {
+            if (status === "success") {
+                console.log("Downloaded successfully");
+            } else {
+                console.log("Error occured during downloading");
+            }
+        });
+
+        function callAfterFourSec() {
+            console.log("inside named function");
+        }
+
+        // setTimeout(callAfterFourSec, 4000);
+
+        // setTimeout(function () {
+        //     console.log("inside anonymous")
+        // }, 2000);
+
+        // setTimeout(() => {
+        //     console.log("Inside arrow")
+        // }, 3000)
+
+        var names = ["manoj", "varshil", "umesh"];
+
+        var uppercaseNames = names.map(name => {
+            return name.toUpperCase();
+        });
+
+        uppercaseNames.map(name => {
+            console.log(name)
+        });
+
+        console.log("End of script " + i)
+    </script>
+</body>
+
+</html>

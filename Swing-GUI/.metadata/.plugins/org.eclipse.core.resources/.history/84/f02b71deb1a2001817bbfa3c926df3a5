@@ -1,0 +1,28 @@
+package com.multithreading.async;
+
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JLabel;
+
+public class SyncButtonHandler implements ActionListener {
+
+	private JLabel label;
+	Container container;
+	
+	public SyncButtonHandler(Container container) {
+		this.container = container;
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+			while(true) {
+				long id = Thread.currentThread().getId();
+				int newId = (int) id;
+				label = new JLabel(id+"");
+				container.add(label);
+				System.out.println(id);
+			}
+	}
+
+}

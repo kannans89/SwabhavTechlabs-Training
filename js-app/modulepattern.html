@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Module pattern</h1>
+
+    <script>
+        // var module = (function () {
+
+        //     function privateSayHi() {  //private function
+        //         console.log("hi");
+        //     }
+        //     return {
+        //         sayHello: function () {
+        //             console.log("Helllo");
+        //         },
+        //         privateSayHi            //becomes public
+        //     }
+        // })();
+
+
+        // function makeCustomer() {
+        //     var obj = {};
+        //     var _name;
+        //     obj.setName = function (name) {
+        //         try {
+        //             if (name.length >= 5) {
+        //                 console.log(name.length)
+        //                 _name = name;
+        //             } else {
+        //                 throw "invalid length";
+        //             }
+        //         } catch (err) {
+        //             console.log(err)
+        //         }
+        //     }
+
+        //     obj.getName = function () {
+        //         return _name;
+        //     }
+        //     return obj;
+        // }
+
+        // var c1 = makeCustomer();
+        // console.log(c1)
+        // c1.setName("ab");
+        // console.log(c1.getName())
+        //module.sayHello();
+        // module.privateSayHi();
+
+        var swabhav = (function () {
+            function makeStudent() {
+                let _name;
+                let obj = {}
+                obj.setName = function (name) {
+                    _name = name;
+                }
+
+                obj.getName = function () {
+                    return _name;
+                }
+                return obj;
+            }
+
+
+            return {
+                makeStudent: makeStudent
+            }
+        })();
+
+        var s1 = swabhav.makeStudent();
+        console.log(s1.setName("abcede"));
+        console.log(s1.getName())
+    </script>
+</body>
+
+</html>

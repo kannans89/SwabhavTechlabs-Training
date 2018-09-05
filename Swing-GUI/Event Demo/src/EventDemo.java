@@ -1,0 +1,58 @@
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
+
+public class EventDemo {
+	JLabel jLable;
+	
+	public EventDemo() {
+		JFrame frame = new JFrame("Event Demo");
+		frame.setLayout(new FlowLayout());
+		frame.setSize(250, 90);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JButton alpha = new JButton("Alpha");
+		JButton beta = new JButton("Beta");
+		
+		alpha.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				jLable.setText("Alpha pressed");
+			}
+		});
+		
+		beta.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				jLable.setText("Beta pressed");
+				
+			}
+		});
+		
+		
+		frame.add(alpha);
+		frame.add(beta);
+		
+		jLable = new JLabel("Press a button above...");
+		frame.add(jLable);
+		
+		frame.setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				new EventDemo();
+			}
+		});
+	}
+}

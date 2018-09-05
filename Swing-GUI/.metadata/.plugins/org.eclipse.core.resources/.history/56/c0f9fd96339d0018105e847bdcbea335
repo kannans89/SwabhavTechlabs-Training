@@ -1,0 +1,9 @@
+package com.swabhav.framedemo;
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public interface ButtonHandler extends ActionListener {
+	public void actionPerformed(ActionEvent e);
+}

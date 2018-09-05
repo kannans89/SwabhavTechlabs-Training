@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-md-12 mb-3 mt-2">
+        <div class="row">
+            <h1 class="col-md-6">Student Details</h1>
+            <div style="float: right;" class="mt-2">
+                <a class="btn btn-primary " href="#/add ">Add Student</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 ">
+        <div class="offset-md-5 " ng-if="loading==true ">
+            <i class="fas fa-spinner fa-7x fa-spin "></i>
+        </div>
+        <table class="table table-striped table-hover table-sm ">
+            <thead>
+                <tr style="text-align: center ">
+                    <th scope="col ">#</th>
+                    <th scope="col ">First Name</th>
+                    <th scope="col ">Last Name</th>
+                    <th scope="col ">CGPA</th>
+                    <th scope="col ">Roll No</th>
+                    <th scope="col ">Gender</th>
+                    <th scope="col " ng-if="loggedIn == true"></th>
+                    <th scope="col " ng-if="loggedIn == true"></th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="(key, student) in students track by $index ">
+                <!-- <tr ng-class="{ 'bg-danger': user.gender==='female' , 'bg-success': user.gender==='male' } "> -->
+                <tr ng-if="student.id " style="text-align: center " ng-class="{ 'bg-danger': (student.gender | colorchange),
+        'bg-success': !(student.gender | colorchange)} ">
+                    <th scope="row ">{{key+1}}</th>
+                    <td>{{student.firstName}}</td>
+                    <td>{{student.lastName}}</td>
+                    <td>{{student.cgpa}}</td>
+                    <td>{{student.rollNo}}</td>
+                    <td>{{student.gender}}</td>
+                    <td ng-if="loggedIn == true">
+                        <a href="#/edit/{{student.id}} " class="btn btn-primary btn-sm ">Edit</a>
+                    </td>
+                    <td ng-if="loggedIn == true">
+                        <!-- <button data-toggle="modal" data-target="#deleteModal" class="btn btn-primary btn-sm ">Delete</button> -->
+                        <a href="#/delete/{{student.id}}" class="btn btn-primary">Delete</a>
+                    </td>
+
+                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Really you want to delete?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        <a href="#/">Close</a>
+                                    </button>
+                                    <a href="#/delete/{{student.id}}" data-dismiss="modal" class="btn btn-primary">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

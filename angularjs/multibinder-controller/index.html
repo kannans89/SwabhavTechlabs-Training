@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="multi-app">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<style>
+    .redBackground {
+        background-color: red;
+    }
+
+    .greenBackground {
+        background-color: green;
+    }
+
+    arialFont {
+        font-family: Arial, Helvetica, sans-serif
+    }
+
+    timesFont {
+        font-family: 'Times New Roman', Times, serif
+    }
+
+    redForeGround {
+        color: red;
+    }
+
+    blackForeGround {
+        color: black;
+    }
+</style>
+
+<body>
+    <div ng-controller="multi-controller">
+        Message:
+        <input type="text" ng-model="message" value=""> Background:
+        <select ng-model="background" ng-change="changedBackground()">
+            <option>red</option>
+            <option>green</option>
+        </select>
+
+        Foreground:
+        <select ng-model="foreground" ng-change="changedForeground()">
+            <option ng-value="red">red</option>
+            <option>black</option>
+        </select>
+
+        Font Size:
+        <input type="range" value="" ng-model="fontsize"> Font famiy:
+        <select ng-model="fontfamily" ng-change="fontfamily=fontfamily">
+            <option>Arial</option>
+            <option>Times New Roman</option>
+        </select>
+
+        <div>
+            <textarea ng-style="classObj" style="width: 200px; height: 200px; 
+                color: {{foreground}}; 
+                font-family: {{fontfamily}};
+                background-color: {{background}};
+                font-size: {{fontsize}}px" ng-class=classes>
+            {{message}}
+            </textarea>
+        </div>
+    </div>
+
+    <script src="../angular.js"></script>
+
+    <script>
+        angular.module("multi-app", []).controller("multi-controller", function ($scope) {
+        })
+    </script>
+</body>
+
+</html>

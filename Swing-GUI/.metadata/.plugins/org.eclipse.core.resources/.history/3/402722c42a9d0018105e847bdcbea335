@@ -1,0 +1,11 @@
+package com.swabhav.framedemo;
+import javax.swing.JFrame;
+
+public class WelcomeFrame extends JFrame {
+		public WelcomeFrame() {
+			JFrame frame = new JFrame("Welcom Frame");
+			frame.setSize(1024, 768);
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frame.setVisible(true);
+		}
+}

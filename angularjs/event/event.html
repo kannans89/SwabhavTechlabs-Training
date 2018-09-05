@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="event-app">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div ng-controller="event-controller">
+        <button ng-click="show=!show" ng-init="show=false">Load employee</button>
+        <section ng-if="show">
+            <h2>ID: {{employee.id}}</h2>
+            <p>First Name: {{employee.firstName}}</p>
+            <p>Last Name: {{employee.lastName}}</p>
+            <img ng-src="{{employee.Photo}}">
+        </section>
+    </div>
+
+    <div ng-controller="timeout-controller">
+        <h1>Name: {{person.name}}</h1>
+        <h2>Company: {{person.company}}</h2>
+    </div>
+
+    <script src="../angular.js"></script>
+    <script src="timeout.js"></script>
+    <script src="event.js"></script>
+
+</body>
+
+</html>

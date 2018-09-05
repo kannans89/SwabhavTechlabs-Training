@@ -1,0 +1,21 @@
+package com.swabhav.framedemo;
+
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class TakeInputListener implements ActionListener{
+
+	Container container;
+	
+	public TakeInputListener(Container container) {
+		this.container = container;
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object source = e.getSource();
+		container.get
+		
+	}
+
+}

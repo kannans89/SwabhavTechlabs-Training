@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todo-app">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div ng-controller="todo-controller">
+        <div>
+            <label for="todo">Todo</label>
+            <input ng-model="todo" type="text" value="">
+            <button ng-click="addTodo()">Add</button>
+        </div>
+        <div ng-repeat="(key, value) in todoList">
+            <ul>
+                <div style="display: flex">
+                    <li>{{value}}</li>
+                    <span style="color: red; margin-left: 20px" ng-click="removeTodo(key)">X</span>
+                </div>
+            </ul>
+        </div>
+    </div>
+
+    <script src="../angular.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>

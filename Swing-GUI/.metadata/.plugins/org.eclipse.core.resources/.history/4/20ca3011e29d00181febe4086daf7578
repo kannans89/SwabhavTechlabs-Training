@@ -1,0 +1,11 @@
+package com.swabhav.test;
+
+import com.swabhav.framedemo.TicTacToeFrame;
+
+public class FrameTest {
+
+	public static void main(String[] args) {
+		new TicTacToeFrame("Tic Tac Toe");
+	}
+
+}

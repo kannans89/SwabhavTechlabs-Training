@@ -1,0 +1,13 @@
+package com.swabhav.framedemo;
+
+import java.awt.event.ActionEvent;
+
+public class GreenButtonHandler implements ButtonHandler {
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

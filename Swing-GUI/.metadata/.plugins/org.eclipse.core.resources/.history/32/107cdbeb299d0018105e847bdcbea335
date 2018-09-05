@@ -1,0 +1,8 @@
+package com.swabhav.framedemo;
+import javax.swing.JFrame;
+
+public class WelcomeFrame extends JFrame {
+		public WelcomeFrame() {
+			JFrame frame = new JFrame("Welcom Frame");
+		}
+}

@@ -1,0 +1,12 @@
+package com.swabhav.test;
+
+import com.swabhav.framedemo.WelcomeFrame;
+
+public class FrameTest {
+
+	public static void main(String[] args) {
+		new WelcomeFrame();
+
+	}
+
+}

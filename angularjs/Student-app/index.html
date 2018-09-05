@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../external-libraries/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    <link rel="stylesheet" href="index.css">
+    <title>Student app</title>
+</head>
+
+<body ng-app="student-app" ng-controller="student-controller">
+
+    <div class="container-fluid">
+        <h1 class="text-center">Student Details</h1>
+        <div class="row">
+            <div class="col-md-4 mt-3">
+                <form name="studentForm" novalidate ng-submit="submitData(studentForm.$valid)">
+                    <div class="row">
+                        <div class="form-group mb-4 col-md-12">
+                            <div class="row">
+                                <label class="col-md-2" for="name">Name</label>
+                                <input ng-model="student.name" required type="text" name="name" id="name" placeholder="Name" class="form-control col-md-8">
+                                <div ng-show="studentForm.name.$invalid && studentForm.name.$touched" class="offset-md-2 invalid-feedback">Your name is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4 col-md-12">
+                            <div class="row">
+                                <label class="col-md-2" for="age">Age</label>
+                                <input type="number" name="age" ng-model="student.age" id="age" placeholder="Age" required class="form-control col-md-8">
+                                <div ng-show="studentForm.age.$invalid && studentForm.age.$touched" class="offset-md-2 invalid-feedback">Age is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4 col-md-12">
+                            <div class="row">
+                                <label class="col-md-2" for="date">Date</label>
+                                <input type="date" name="date" ng-model="student.date" id="date" placeholder="dd/mm/yyyy" required class="form-control col-md-8">
+                                <div ng-show="studentForm.date.$invalid && studentForm.date.$touched" class="offset-md-2 invalid-feedback">Date is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4 col-md-12">
+                            <div class="row">
+                                <label class="col-md-2" for="email">Email</label>
+                                <input required type="email" name="email" id="email" ng-model="student.email" placeholder="name@example.com" class="form-control col-md-8">
+                                <div ng-show="studentForm.email.$invalid && studentForm.email.$touched" class="offset-md-2 invalid-feedback">Enter a valid email</div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 offset-md-2 mb-4">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input ng-value="'male'" type="radio" id="male" ng-model="student.gender" name="gender" class="custom-control-input">
+                                <label class="custom-control-label" for="male">Male</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input ng-value="'female'" type="radio" ng-model="student.gender" id="female" name="gender" class="custom-control-input">
+                                <label class="custom-control-label" for="female">Female</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-4 col-md-12">
+                            <div class="row">
+                                <label class="col-md-2" for="password">Roll No</label>
+                                <input type="number" ng-model="student.rollNo" name="rollNumber" id="rollNumber" required placeholder="Roll number" class="form-control col-md-8">
+                                <div ng-show="studentForm.rollNumber.$invalid && studentForm.rollNumber.$touched" class="offset-md-2 invalid-feedback">Your roll number is required</div>
+                            </div>
+                        </div>
+                        <button type="submit" ng-disabled="studentForm.$invalid" class="btn btn-primary col-md-6 offset-md-3">Add student</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-8 mt-3">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="offset-md-5" ng-if="loading === true">
+                            <i class="fas fa-spinner fa-7x fa-spin"></i>
+                        </div>
+                        <table class="table table-dark table-striped table-hover table-sm">
+                            <thead>
+                                <tr style="text-align: center">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Age</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Gender</th>
+                                    <th scope="col">Roll No</th>
+                                    <th scope="col">Date</th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="(key, student) in students track by $index">
+                                <!-- <tr ng-class="{'bg-danger': user.gender === 'female', 'bg-success': user.gender === 'male'}"> -->
+                                <tr style="text-align: center" ng-class="{'bg-danger': (student.gender | colorchange), 'bg-success': !(student.gender | colorchange)}">
+                                    <th scope="row">{{key+1}}</th>
+                                    <td>{{student.name}}</td>
+                                    <td>{{student.age}}</td>
+                                    <td>{{student.email}}</td>
+                                    <td>{{student.gender}}</td>
+                                    <td>{{student.rollNo}}</td>
+                                    <td>{{student.date | date}}</td>
+                                    <!-- <td ng-click="deleteRow(key)">X</td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="../external-libraries//angular.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

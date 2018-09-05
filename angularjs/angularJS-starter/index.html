@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="swabhav.modA">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular app</title>
+</head>
+
+<body>
+    <!-- <div>
+        <h1>{{22/7 | number:2}}</h1>
+        <h2>{{(student.name || "Manoj") | uppercase}}</h2>
+    </div> -->
+    <div ng-controller="home-controller">
+
+    </div>
+
+    <div ng-controller="student-controller">
+        <h1>Student details</h1>
+        <div ng-repeat="(key,student) in studentController.students">
+            <h2>Name: {{student.name}}</h2>
+            <p>ID: {{student.id}}</p>
+            <p>Contact: {{student.phone}}</p>
+            <hr />
+        </div>
+    </div>
+
+    <div ng-controller="faculty-controller">
+
+    </div>
+
+    <script src="../angular.js"></script>
+    <script src="modulec.js"></script>
+    <script src="moduleb.js"></script>
+    <script src="mainmodule.js"></script>
+</body>
+
+</html>

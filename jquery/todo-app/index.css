@@ -1,0 +1,32 @@
+.red {
+  color: red;
+  text-decoration: none !important;
+}
+
+span {
+  margin-left: 10px;
+}
+
+li i {
+  margin-top: 0.8em;
+  cursor: pointer;
+}
+
+li i.fa-check-square {
+  color: lightgreen;
+}
+
+.fa-window-close {
+  margin-bottom: 0.8em;
+  color: red;
+  cursor: pointer;
+}
+
+li {
+  margin-left: 8em;
+}
+
+li > * {
+  display: inline-block;
+  vertical-align: middle;
+}

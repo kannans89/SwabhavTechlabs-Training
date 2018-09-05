@@ -1,0 +1,46 @@
+package com.swabhav.framedemo;
+
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+import com.tic.tac.toe.Game;
+import com.tic.tac.toe.GameStatus;
+import com.tic.tac.toe.Mark;
+import com.tic.tac.toe.Player;
+import com.tic.tac.toe.ResultAnalyser;
+import com.tic.tac.toe.ThreeByThreeBoard;
+
+public class TicTacToeFrame extends JFrame {
+	JButton[] buttons = new JButton[9];
+	TicTacToeButtonHandler handler;
+	
+	public TicTacToeFrame(String title) {
+		setLayout(new GridLayout(3, 3));
+		setTitle(title);
+		setSize(768, 512);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		new TicTacToeButtonHandler();
+		createButtons(this);
+
+		new TicTacToeButtonHandler();
+		setVisible(true);
+	}
+
+	public void createButtons(Container container) {
+		for (int i = 0; i < 9; i++) {
+			buttons[i] = new JButton();
+			buttons[i].setText(i+"");
+			container.add(buttons[i]);
+			buttons[i].addActionListener(handler);
+		}
+	}
+}

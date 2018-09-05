@@ -1,0 +1,18 @@
+package com.swabhav.framedemo;
+
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class TakeInputListener implements ActionListener{
+
+	public TakeInputListener(Container container) {
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

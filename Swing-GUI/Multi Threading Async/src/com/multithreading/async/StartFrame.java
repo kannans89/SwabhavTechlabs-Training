@@ -1,0 +1,41 @@
+package com.multithreading.async;
+
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class StartFrame extends JFrame{
+	private JButton syncButton, asyncButton, helloButton;
+	private SyncButtonHandler syncHandler;
+	private AsyncButtonHandler asyncHandler;
+	private HelloButtonHandelr helloHandler;
+	
+	public StartFrame() {
+		setTitle("Start frame");
+		setSize(new Dimension(768, 1024));
+		setLayout(new FlowLayout());
+		
+		syncButton = new JButton("Sync");
+		asyncButton = new JButton("Async");
+		helloButton = new JButton("Hello");
+		
+		add(syncButton);
+		add(asyncButton);
+		add(helloButton);
+		
+		syncHandler = new SyncButtonHandler(getContentPane());
+		asyncHandler = new AsyncButtonHandler(getContentPane());
+		helloHandler = new HelloButtonHandelr(getContentPane());
+		
+		setEventListener();
+		setVisible(true);
+	}
+	
+	public void setEventListener() {
+		syncButton.addActionListener(syncHandler);
+		asyncButton.addActionListener(asyncHandler);
+		helloButton.addActionListener(helloHandler);
+	}
+}

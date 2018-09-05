@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../external-libraries/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./templates/index.css">
+    <title>Student SPA</title>
+</head>
+
+<body ng-app="student-app" ng-controller="main-controller">
+    <div class="container">
+        <nav class="col-md-8 navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#/">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" ng-change="filterNames()" ng-model="input" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+
+                <ul class="navbar-nav ml-auto">
+                    <button ng-if="loggedIn == true" ng-click="logOutUser()" class="btn btn-primary">Sign Out</button>
+                    <a ng-if="loggedIn == false" class="nav-item nav-link" href="#signup">Sign Up</a>
+                    <a ng-if="loggedIn == false" class="nav-item nav-link" href="#login">Sign in</a>
+                    <a ng-if="loggedIn == true" class="nav-item nav-link" style="color: black">{{currentUser}}</a>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="col-md-8" ng-show="showFilter">
+            <ul ng-repeat="(key, value) in namesArray" id="myUL">
+                <li>
+                    <a href="#">{{value}}</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div ng-view>
+
+        </div>
+
+        <script src="../external-libraries/angular.js"></script>
+        <script src="../external-libraries/angular-route.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="../external-libraries/bootstrap/js/bootstrap.min.js"></script>
+        <script src="app.js"></script>
+    </div>
+</body>
+
+</html>

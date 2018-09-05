@@ -1,0 +1,65 @@
+package com.swabhav.framedemo;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import com.tic.tac.toe.Mark;
+import com.tic.tac.toe.Player;
+
+public class HomeFrame extends JFrame{
+	String player1, player2, player1Mark, player2Mark;
+	String[] playersName;
+	String[] playersMark;
+	
+	public HomeFrame(String title) {
+		setLayout(new BorderLayout());
+		setTitle(title);
+		setSize(600, 300);
+		JPanel northPanel = new JPanel(new GridLayout(2, 1));
+		
+		JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		titlePanel.add(new JLabel("Play Tic Tac Toe"));
+		northPanel.add(titlePanel);
+		
+		JPanel namePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JTextField player1Name = new JTextField("Player 1 name", 16);
+		JTextField player1Mark = new JTextField("mark", 4);
+		JTextField player2Name = new JTextField("Player 2 name", 16);
+		JTextField player2Mark = new JTextField("mark", 4);
+		
+		namePanel.add(player1Name);
+		namePanel.add(player1Mark);
+		namePanel.add(player2Name);
+		namePanel.add(player2Mark);
+		northPanel.add(namePanel);
+		
+		add(northPanel);
+		this.playersName = new String[2];
+		this.playersMark = new String[2];
+		//getPlayersDetails();
+		new TicTacToeFrame("Tic Tac Toe Board", this.playersName, this.playersMark);
+		setVisible(true);
+	}
+	
+	public void getPlayersDetails() {
+		playersName[0] = JOptionPane.showInputDialog("Enter first player name.");
+		playersMark[0] = JOptionPane.showInputDialog("Enter first player's choice of mark X/O");
+		playersName[1] = JOptionPane.showInputDialog("Enter second player name");
+		playersMark[1] = JOptionPane.showInputDialog("Enter second player's choice of mark X/O");
+		checkPlayers();
+	}
+	
+	public void checkPlayers() {
+		if(playersName[0] == null || playersName[1] == null || playersMark[0] == null || playersMark[1] == null) {
+			JOptionPane.showMessageDialog(this, "Please enter players details...");
+			getPlayersDetails();
+		}
+	}
+}

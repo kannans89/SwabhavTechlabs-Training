@@ -1,0 +1,14 @@
+package com.swabhav.framedemo;
+import java.awt.Color;
+
+import javax.swing.JFrame;
+
+public class WelcomeFrame extends JFrame {
+		public WelcomeFrame(String title) {
+			setTitle(title);
+			setSize(1024, 768);
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			setVisible(true);
+			getContentPane().setBackground(Color.BLUE);
+		}
+}

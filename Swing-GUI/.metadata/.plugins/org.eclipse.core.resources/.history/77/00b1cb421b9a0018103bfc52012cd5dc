@@ -1,0 +1,8 @@
+import javax.swing.JFrame;
+
+public class SwingDemo {
+	public SwingDemo() {
+		JFrame frame = new JFrame("Demo app");
+		frame.setSize(200, 150);
+	}
+}

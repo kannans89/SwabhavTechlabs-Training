@@ -1,0 +1,98 @@
+package com.swabhav.framedemo;
+
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+import com.tic.tac.toe.Game;
+import com.tic.tac.toe.GameStatus;
+import com.tic.tac.toe.Mark;
+import com.tic.tac.toe.Player;
+import com.tic.tac.toe.ResultAnalyser;
+import com.tic.tac.toe.ThreeByThreeBoard;
+
+public class TicTacToeFrame extends JFrame {
+	JButton[] buttons = new JButton[9];
+	TicTacToeButtonHandler handler;
+	
+	public TicTacToeFrame(String title) {
+		setLayout(new GridLayout(3, 3));
+		setTitle(title);
+		setSize(768, 512);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		new TicTacToeButtonHandler();
+		createButtons(this);
+		
+		board = new ThreeByThreeBoard();
+		analyser = new ResultAnalyser(board);
+		players = new Player[2];
+		players[0] = new Player(Mark.O, "Player 1");
+		players[1] = new Player(Mark.X, "Player 2");
+
+		this.game = new Game(board, players, analyser);
+		game.init();
+		this.status = game.getGameStatus();
+		this.currentMark = game.getCurrentPlayer().getMark();
+		
+		setVisible(true);
+	}
+
+	public void createButtons(Container container) {
+		for (int i = 0; i < 9; i++) {
+			buttons[i] = new JButton();
+			buttons[i].setText(i+"");
+			container.add(buttons[i]);
+			buttons[i].addActionListener(handler);
+		}
+	}
+	
+	private class ButtonHandler implements ActionListener{
+		int i;
+		public ButtonHandler(int i) {
+			this.i = i;
+		}
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String source = e.getActionCommand();
+			int position = Integer.parseInt(source);
+			if(e.getSource() == i+"") {
+				if(currentMark == Mark.O) {
+					buttons[Integer.parseInt(i+"")].setIcon(oIcon);
+				}	
+				else {
+					buttons[Integer.parseInt(i+"")].setIcon(xIcon);
+				}
+			}
+			
+			System.out.println("i= "+i+"before"+currentMark+"\tStatus: "+status);
+			callPlay(position);
+			setDetails();
+			System.out.println("after"+currentMark+"\tStatus: "+status);
+			checkStatus();
+			
+		}
+		
+	}
+	
+	public void callPlay(int position) {
+		System.out.println(game == null);
+		game.play(position);
+	}
+	
+	public void setDetails() {
+		this.currentMark = game.getCurrentPlayer().getMark();
+		this.status = game.getGameStatus();
+	}
+	public void checkStatus() {
+		
+	}
+
+}

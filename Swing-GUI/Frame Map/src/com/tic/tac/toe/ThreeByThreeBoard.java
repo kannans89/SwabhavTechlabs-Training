@@ -1,0 +1,70 @@
+package com.tic.tac.toe;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class ThreeByThreeBoard implements IBoard {
+	private final int MAX_SIZE = 9;
+	private final int BOARD_TYPE = 3;
+	private HashMap<Integer, Cell> board;
+
+	public ThreeByThreeBoard() {
+		this.board = new HashMap<>();
+		for (int i = 0; i < MAX_SIZE; i++) {
+			Cell cell = new Cell();
+			board.put(i, cell);
+		}
+	}
+
+	public int getMaxSize() {
+		return this.MAX_SIZE;
+	}
+
+	public int getBoardType() {
+		return this.BOARD_TYPE;
+	}
+
+	public boolean isBoardFull() {
+		Set<Map.Entry<Integer, Cell>> setView = board.entrySet();
+		for (Map.Entry<Integer, Cell> entry : setView)
+			if (entry.getValue().getMark() == Mark.EMPTY)
+				return false;
+		return true;
+	}
+
+	public void addCell(Integer position, Mark mark) {
+		if (position < MAX_SIZE)
+			if (board.get(position).getMark() == Mark.EMPTY) {
+				Cell cell = board.get(position);
+				cell.setMark(mark);
+				board.put(position, cell);
+			}
+	}
+
+	public void setBoard(HashMap<Integer, Cell> board) {
+		this.board = board;
+	}
+
+	public HashMap<Integer, Cell> getBoard() {
+		return this.board;
+	}
+
+	@Override
+	public boolean isCellEmpty(int position) {
+		if (position >= MAX_SIZE)
+			return false;
+		if (board.get(position).getMark() == Mark.EMPTY)
+			return true;
+		return false;
+	}
+
+	@Override
+	public boolean isBoardClear() {
+		Set<Map.Entry<Integer, Cell>> setView = board.entrySet();
+		for (Map.Entry<Integer, Cell> entry : setView)
+			if (entry.getValue().getMark() != Mark.EMPTY)
+				return false;
+		return true;
+	}
+}

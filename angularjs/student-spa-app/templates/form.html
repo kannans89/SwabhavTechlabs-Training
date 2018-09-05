@@ -1,0 +1,64 @@
+<div class="row mt-3">
+    <div class="col-md-12">
+        <div ng-show="!edit" class="row ">
+            <h1 class="text-center">Add details</h1>
+        </div>
+        <div ng-show="edit" class="row ">
+            <h1 class="text-center">Edit details</h1>
+        </div>
+    </div>
+    <div class="col-md-8 offset-md-2">
+        <form name="studentForm" novalidate ng-submit="submitData(studentForm.$valid)">
+            <div class="row">
+                <div class="form-group mb-4 col-md-12">
+                    <div class="row">
+                        <label class="col-md-2" for="firstName">First Name</label>
+                        <input ng-model="student.firstName" value="student.firstName" required type="text " name="firstName " id="firstName
+                            " placeholder="First name " class="form-control col-md-8 ">
+                        <div ng-show="studentForm.firstName.$invalid && studentForm.firstName.$touched " class="offset-md-2
+                            invalid-feedback ">Your first name is required</div>
+                    </div>
+                </div>
+                <div class="form-group mb-4 col-md-12 ">
+                    <div class="row ">
+                        <label class="col-md-2 " for="lastName ">Last Name</label>
+                        <input type="text " name="lastName " ng-model="student.lastName " id="lastName " placeholder="Last
+                            name " required class="form-control col-md-8 ">
+                        <div ng-show="studentForm.lastName.$invalid && studentForm.lastName.$touched " class="offset-md-2
+                            invalid-feedback ">Last name is required</div>
+                    </div>
+                </div>
+                <div class="form-group mb-4 col-md-12 ">
+                    <div class="row ">
+                        <label class="col-md-2 " for="cgpa ">CGPA</label>
+                        <input required type="number " name="cgpa " id="cgpa " ng-model="student.cgpa " placeholder="CGPA
+                            " class="form-control col-md-8 ">
+                        <div ng-show="studentForm.cgpa.$invalid && studentForm.cgpa.$touched " class="offset-md-2 invalid-feedback ">Enter a valid email</div>
+                    </div>
+                </div>
+                <div class="col-md-7 offset-md-2 mb-4">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input value="Male" type="radio" id="male" ng-model="student.gender" name="gender" class="custom-control-input">
+                        <label class="custom-control-label" for="male">Male</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input value="Female" type="radio" ng-model="student.gender" id="female" name="gender" class="custom-control-input">
+                        <label class="custom-control-label" for="female">Female</label>
+                    </div>
+                </div>
+
+                <div class="form-group mb-4 col-md-12 ">
+                    <div class="row ">
+                        <label class="col-md-2 " for="password ">Roll No</label>
+                        <input type="number " ng-model="student.rollNo " name="rollNumber " id="rollNumber
+                            " required placeholder="Roll number " class="form-control col-md-8 ">
+                        <div ng-show="studentForm.rollNumber.$invalid && studentForm.rollNumber.$touched " class="offset-md-2
+                            invalid-feedback ">Your roll number is required</div>
+                    </div>
+                </div>
+                <button ng-show="!edit" type="submit" ng-click="addStudent()" ng-disabled="studentForm.$invalid " class="btn btn-primary col-md-6 offset-md-3 ">Add student</button>
+                <button ng-show="edit" type="submit" ng-click="updateStudent()" ng-disabled="studentForm.$invalid " class="btn btn-primary col-md-6 offset-md-3 ">Update student</button>
+            </div>
+        </form>
+    </div>
+</div>

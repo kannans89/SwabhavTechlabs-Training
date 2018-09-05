@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Constructor pattern</h1>
+    <script>
+        // function car(name, model) {
+        //     this.name = name;
+        //     this.model = model;
+        //     this.wheels = 4;
+        // }
+
+        // var audi = new car("Audi", "1z52");
+        // var bmw = new car("BMW", "1fg5");
+
+        function customer() {
+            let _name; //private
+
+            this.setName = (name) => {
+                try {
+                    if (name.length >= 5) {
+                        console.log(name.length)
+                        _name = name;
+                    } else {
+                        throw "invalid length";
+                    }
+                } catch (err) {
+                    console.log(err + "error")
+                }
+            }
+
+            this.getName = () => {
+                return _name;
+            }
+        }
+        let c1 = new customer();
+        c1.setName("abc");
+        //console.log(c1);
+        console.log(c1.getName());
+    </script>
+</body>
+
+</html>
