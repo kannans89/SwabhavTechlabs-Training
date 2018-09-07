@@ -4,6 +4,13 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="main" namespace="/" extends="struts-default">
+
+		<interceptors>
+			<interceptor name="authuser"
+				class="com.techlabs.interceptors.AuthenticateInterceptor">
+			</interceptor>
+		</interceptors>
+
 		<action name="" class="">
 			<result name="success">/index.html</result>
 		</action>
@@ -14,38 +21,69 @@
 		<action name="browse" class="com.techlabs.action.BrowseAction">
 			<result name="success">/views/Browse.jsp</result>
 		</action>
-		
-		<action name="students" class="com.techlabs.action.StudentAction">
+
+		<action name="students"
+			class="com.techlabs.action.StudentAction">
+			<interceptor-ref name="authuser"></interceptor-ref>
 			<result name="success">/views/Student.jsp</result>
+			<result name="login" type="redirect">/Login.html</result>
 		</action>
-		
-		<action name="register" class="com.techlabs.action.RegisterAction">
+
+		<action name="register"
+			class="com.techlabs.action.RegisterAction">
 			<result name="success">/views/thankyou.jsp</result>
-			<result name="input" >/Register.jsp</result>
+			<result name="input">/Register.jsp</result>
 		</action>
-		
-		<action name="addstudent" class="com.techlabs.action.AddStudentAction">
+
+		<action name="addstudent"
+			class="com.techlabs.action.AddStudentAction">
+			<interceptor-ref name="authuser"></interceptor-ref>
 			<result name="success">/views/addStudent.jsp</result>
-			
+
 		</action>
-		
-		<action name="addstudenttodb" method="addTodb" class="com.techlabs.action.AddStudentAction">
+
+		<action name="addstudenttodb" method="addTodb"
+			class="com.techlabs.action.AddStudentAction">
 			<result name="success" type="chain">students</result>
-			<result name="input" >/views/addStudent.jsp</result>
+			<result name="input">/views/addStudent.jsp</result>
 		</action>
-		
-		<action name="editstudent" method="execute" class="com.techlabs.action.EditStudentAction">
+
+		<action name="editstudent" method="execute"
+			class="com.techlabs.action.EditStudentAction">
+			<interceptor-ref name="authuser"></interceptor-ref>
 			<result name="success">/views/editStudent.jsp</result>
-			
+
 		</action>
-		
-		<action name="updatestudent" method="updateStudent" class="com.techlabs.action.EditStudentAction">
-		<result name="success" type="chain">students</result>
-		<result name="input" >/views/editStudent.jsp</result>
-		</action>
-		
-		<action name="deletestudent" class="com.techlabs.action.DeleteStudent">
+
+		<action name="updatestudent" method="updateStudent"
+			class="com.techlabs.action.EditStudentAction">
+			<interceptor-ref name="authuser"></interceptor-ref>
 			<result name="success" type="chain">students</result>
+			<result name="input">/views/editStudent.jsp</result>
+		</action>
+
+		<action name="deletestudent"
+			class="com.techlabs.action.DeleteStudent">
+			<interceptor-ref name="authuser"></interceptor-ref>
+			<result name="success" type="redirect">students</result>
+		</action>
+
+		<action name="login" class="com.techlabs.action.LoginAction">
+			<result name="success" type="redirect">students</result>
+			<result name="error" type="redirect">/Login.html</result>
+		</action>
+
+		<action name="logout" class="com.techlabs.action.LogoutAction">
+			<result name="success" type="redirect">/Login.html
+			</result>
+		</action>
+
+
+	</package>
+	
+	<package name="json-package" extends = "json-default">
+		<action name="getstudents" class="com.techlabs.action.GetStudentsByJSON">
+		<result type="json"></result>
 		</action>
 	</package>
 </struts>

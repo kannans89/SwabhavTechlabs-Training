@@ -8,8 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>List of students</h1>
+<h1>List of students</h1><span>Logged in user <s:property value="#session.username"/></span>
 <a href="/Welcome-Struts-App/addstudent">Add Student</a>
+<a href="/Welcome-Struts-App/logout">Logout</a>
+<a href="/Welcome-Struts-App/index.html">Home</a>
 <div>
 <s:iterator value="students">
 	<p>Name: <s:property value="firstName"/></p>

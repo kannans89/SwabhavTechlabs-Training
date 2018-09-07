@@ -1,1 +1,1 @@
-{}
+[[{"location":"/usr/lib/jvm/java-8-oracle","type":"JRE","hints":{"EXECUTION_ENVIRONMENT":"JavaSE-1.8"}},"jre:jre:1.8.0"],[{"location":"/home/manu/Desktop/Swabhav/Struts/student-college-app","type":"PROJECT","hints":{"PROJECT_NAME":"student-college-app"}},"ABSENT"],[{"location":"/home/manu/.gradle/caches/modules-2/files-2.1/org.apache.struts/struts2-core/2.5.12/f54393d3c1396320ef62a25897840adee582b2e0/struts2-core-2.5.12.jar","type":"JAR","hints":{}},"org.apache.struts:struts2-core:2.5.12"]]
