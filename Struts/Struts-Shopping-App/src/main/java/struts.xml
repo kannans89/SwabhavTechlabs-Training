@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="main" namespace="/" extends="struts-default, json-default">
+		<action name="" class="">
+			<result>views/index.html</result>
+		</action>
+
+		<action name="browseproducts" method="execute"
+			class="com.shoppingcart.actions.BrowseProductAction">
+			<result name="success">/views/jsp/products.jsp</result>
+		</action>
+		<action name="addtocart" method="addProductToCart"
+			class="com.shoppingcart.actions.BrowseProductAction">
+			<result name="success" type="chain">browseproducts</result>
+		</action>
+
+		<action name="updateproduct" method="updateProduct"
+			class="com.shoppingcart.actions.BrowseProductAction">
+			<result name="success" type="chain">browseproducts</result>
+		</action>
+
+		<action name="deleteproduct" method="deleteProduct"
+			class="com.shoppingcart.actions.BrowseProductAction">
+			<result name="success" type="chain">browseproducts</result>
+		</action>
+		
+		<action name="updateproducts"
+			class="com.shoppingcart.actions.UpdateProductAction">
+			<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+			<result type="json"></result>
+		</action>
+	</package>
+
+</struts>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="main" namespace="/"
+		extends="struts-default, json-default">
+
+		<interceptors>
+			<interceptor name="loginInterceptor"
+				class="com.banking.interceptor.LoginInterceptor"></interceptor>
+			<interceptor-stack name="loginStack">
+				<interceptor-ref name="loginInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<global-results>
+			<result name="login" type="redirectAction">login</result>
+		</global-results>
+
+		<action name="" class="">
+			<result name="success">views/html/index.html</result>
+		</action>
+
+		<action name="register" method="execute"
+			class="com.banking.action.RegisterAction">
+			<result name="success">views/jsp/register.jsp</result>
+		</action>
+
+		<action name="addusertodb" method="addUserToDB"
+			class="com.banking.action.RegisterAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">sendactivationlink</param>
+				<param name="rEmail">${userBean.email}</param>
+			</result>
+			<result name="input">/views/jsp/register.jsp</result>
+		</action>
+
+		<action name="sendactivationlink"
+			class="com.banking.action.MailAction">
+			<result name="success">views/jsp/notifysuccess.jsp</result>
+		</action>
+
+		<action name="activateaccount"
+			class="com.banking.action.ActivateAccountAction">
+			<result name="success">views/jsp/login.jsp</result>
+		</action>
+
+		<action name="login" method="execute"
+			class="com.banking.action.LoginAction">
+			<result name="success">views/jsp/login.jsp</result>
+		</action>
+
+		<action name="loginuser" method="loginUser"
+			class="com.banking.action.LoginAction">
+			<result name="success" type="redirectAction">transactions</result>
+			<result name="admin" type="redirectAction">admin</result>
+			<result name="input">/views/jsp/login.jsp</result>
+
+		</action>
+
+		<action name="logout" method="logoutUser"
+			class="com.banking.action.LoginAction">
+			<result name="success">/views/jsp/login.jsp</result>
+		</action>
+
+		<action name="transactions" method=""
+			class="com.banking.action.TransactionsAction">
+			<interceptor-ref name="loginStack"></interceptor-ref>
+			<result name="success">views/jsp/transaction.jsp</result>
+		</action>
+
+		<action name="transfer" method="execute"
+			class="com.banking.action.TransferAction">
+			<interceptor-ref name="loginStack"></interceptor-ref>
+			<result name="success">/views/jsp/transfer.jsp</result>
+		</action>
+
+		<action name="transferamount" method="transferAmount"
+			class="com.banking.action.TransferAction">
+			<interceptor-ref name="loginStack"></interceptor-ref>
+			<result name="success" type="redirectAction">transactions</result>
+		</action>
+
+		<action name="deposit" method="execute"
+			class="com.banking.action.DepositAction">
+			<interceptor-ref name="loginStack"></interceptor-ref>
+			<result name="success">/views/jsp/deposit.jsp</result>
+		</action>
+
+		<action name="depositamount" method="depositAmount"
+			class="com.banking.action.DepositAction">
+			<interceptor-ref name="loginStack"></interceptor-ref>
+			<result name="success" type="redirectAction">transactions</result>
+		</action>
+
+		<action name="withdraw" method="execute"
+			class="com.banking.action.WithdrawAction">
+			<interceptor-ref name="loginStack"></interceptor-ref>
+			<result name="success">/views/jsp/withdraw.jsp</result>
+		</action>
+
+		<action name="withdrawamount" method="withdrawAmount"
+			class="com.banking.action.WithdrawAction">
+			<interceptor-ref name="loginStack"></interceptor-ref>
+			<result name="success" type="redirectAction">transactions</result>
+			<result name="input">/views/jsp/withdraw.jsp</result>
+		</action>
+
+		<action name="report" method=""
+			class="com.banking.action.ReportAction">
+			<interceptor-ref name="loginStack"></interceptor-ref>
+		</action>
+
+		<action name="admin" method=""
+			class="com.banking.action.AdminAction">
+			<interceptor-ref name="loginStack"></interceptor-ref>
+			<result name="success">/views/jsp/admin.jsp</result>
+			<result name="input">/views/jsp/error.jsp</result>
+		</action>
+
+		<action name="unlock" class="com.banking.action.UnlockAction">
+			<interceptor-ref name="loginStack"></interceptor-ref>
+			<result name="success" type="redirectAction">admin</result>
+		</action>
+	</package>
+</struts>

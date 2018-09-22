@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="main" namespace="/" extends="struts-default">
+
+		<interceptors>
+			<interceptor name="loginInterceptor"
+				class="com.techlabs.interceptors.LoginInterceptor"></interceptor>
+			<interceptor-stack name="loginStack">
+				<interceptor-ref name="loginInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<global-results>
+			<result name="login" type="redirectAction">login</result>
+		</global-results>
+
+		<action name="" class="">
+			<result name="success">views/index.html</result>
+		</action>
+
+		<action name="showemployees"
+			class="com.techlabs.actions.ShowEmployeesAction" method="execute">
+			<interceptor-ref name="loginStack"></interceptor-ref>
+			<result name="success">views/Employees.jsp</result>
+		</action>
+
+		<action name="addemployee" method="execute"
+			class="com.techlabs.actions.EmployeeAction">
+			<interceptor-ref name="loginStack"></interceptor-ref>
+			<result name="success">views/AddEmployee.jsp</result>
+		</action>
+
+		<action name="addtodb" method="addToDB"
+			class="com.techlabs.actions.EmployeeAction">
+			<interceptor-ref name="loginStack"></interceptor-ref>
+			<result name="success" type="redirectAction">showemployees</result>
+		</action>
+
+		<action name="deleteemployee" method="deleteEmployee"
+			class="com.techlabs.actions.EmployeeAction">
+			<interceptor-ref name="loginStack"></interceptor-ref>
+			<result name="success" type="redirectAction">showemployees</result>
+		</action>
+
+		<action name="editemployee" method="editEmployee"
+			class="com.techlabs.actions.EmployeeAction">
+			<interceptor-ref name="loginStack"></interceptor-ref>
+			<result name="success">views/EditEmployee.jsp</result>
+		</action>
+
+		<action name="updateemployee" method="updateEmployee"
+			class="com.techlabs.actions.EmployeeAction">
+			<interceptor-ref name="loginStack"></interceptor-ref>
+			<result name="success" type="redirectAction">showemployees</result>
+		</action>
+
+		<action name="register" method="execute"
+			class="com.techlabs.actions.RegisterUserAction">
+			<result name="success">views/Register.jsp</result>
+		</action>
+
+		<action name="registeruser" method="registerUser"
+			class="com.techlabs.actions.RegisterUserAction">
+			<result name="success">views/Login.jsp</result>
+			<result name="input">views/Register.jsp</result>
+		</action>
+
+		<action name="login" method="execute"
+			class="com.techlabs.actions.LoginAction">
+			<result name="success" type="redirect">views/Login.jsp</result>
+		</action>
+
+		<action name="loginuser" method="loginUser"
+			class="com.techlabs.actions.LoginAction">
+			<result name="success" type="redirectAction">showemployees</result>
+
+		</action>
+
+		<action name="logout" method="logoutUser"
+			class="com.techlabs.actions.LoginAction">
+			<result name="success" type="redirect">views/index.html</result>
+		</action>
+	</package>
+</struts>
